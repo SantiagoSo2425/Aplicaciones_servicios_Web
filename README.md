@@ -72,13 +72,18 @@ Complete la tabla:
 
   Recurso   Tipo   Dominio     Tamaño
   --------- ------ --------- --------
-                             
+  colciencias JPG     itm         16.7 kB
+  1f44b       svg     w             1.2 KB
+  profesor-300x300 png  itm        44.9 kB
+  cruz-catedra    png   itm            3.4 kB
+  empleado-300x300  png  itm        37.1 kB
+
                              
                              
                              
                              
 
-**Total de solicitudes observadas:** `_____`
+**Total de solicitudes observadas:** `_1___`
 
 ## Evidencia
 
@@ -98,7 +103,7 @@ Inclúyala aquí:
 
 **¿Por qué una sola URL puede generar múltiples solicitudes HTTP?**
 
-> Escriba aquí su respuesta.
+> Porque una web moderna es una colección de de decenas de archivos independientes.
 
 ------------------------------------------------------------------------
 
@@ -111,12 +116,12 @@ Identifique la información solicitada a continuación.
 
   Elemento              Resultado
   --------------------- -----------
-  URL                   
-  Método HTTP           
-  Código de estado      
-  Host / dominio        
-  Tipo de recurso       
-  Tiempo de respuesta   
+  URL                   https://www.itm.edu.co/formatos-institucionales/
+  Método HTTP           GET
+  Código de estado      200 OK
+  Host / dominio        200.13.235.198:443 / itm
+  Tipo de recurso       document
+  Tiempo de respuesta   950 ms  
 
 ## Flujo que se está observando
 
@@ -146,12 +151,12 @@ Inclúyala en el informe:
 
 **¿Qué recurso solicitó el navegador?**
 
-> Escriba aquí su respuesta.
+> formatos-institucionales
 
 **¿Qué información permite determinar si la solicitud fue atendida
 correctamente?**
 
-> Escriba aquí su respuesta.
+> Codigos de estado - 200 ok
 
 ------------------------------------------------------------------------
 
@@ -176,13 +181,13 @@ Utilizando **Elementos / Elements**:
 
 ## Resultados
 
-**Elemento seleccionado:** `____________________________`
+**Elemento seleccionado:** `__________Firma__________________`
 
-**Etiqueta HTML:** `____________________________`
+**Etiqueta HTML:** `_______________<h3 class="  " style="font-size: 19px;" data-wahpro-titles-style="font-size: 19px;"></h3>_____________`
 
-**Contenido original:** `____________________________`
+**Contenido original:** `____________<h3 class="  " style="font-size: 19px;" data-wahpro-titles-style="font-size: 19px;">Firma</h3>________________`
 
-**Modificación realizada:** `____________________________`
+**Modificación realizada:** `________________<h3 class="  " style="font-size: 19px;" data-wahpro-titles-style="font-size: 19px;">Firma Digital</h3>____________`
 
 El proceso observado puede representarse conceptualmente así:
 
@@ -213,7 +218,7 @@ Inclúyala aquí:
 **¿La modificación realizada sobre el DOM alteró permanentemente la
 aplicación o los archivos almacenados en el servidor? Justifique.**
 
-> Escriba aquí su respuesta.
+> No, solo modifico la versión almacenada en el caché sin tocar permanentemente los archivos del servidor.
 
 ------------------------------------------------------------------------
 
@@ -236,12 +241,12 @@ Observe si aparece una nueva solicitud en Network.
 
   Elemento                       Resultado
   ------------------------------ -----------
-  Acción realizada               
-  ¿Generó una nueva solicitud?   
-  URL solicitada                 
-  Método HTTP                    
-  Código de estado               
-  Tipo de respuesta              
+  Acción realizada               Boton Descargar
+  ¿Generó una nueva solicitud?   Si
+  URL solicitada                 https://www.itm.edu.co/wp-content/uploads/formatos/membretes-2026.zip
+  Método HTTP                    GET
+  Código de estado               200 ok
+  Tipo de respuesta              archivo descargado pptx
 
 ## Ciclo de interacción
 
@@ -277,7 +282,7 @@ Inclúyala aquí:
 **Explique la relación entre la acción realizada por el usuario y la
 solicitud observada.**
 
-> Escriba aquí su respuesta.
+> El usuario con su interaccion sobre un boton envio una request a una direccion url, que obtiene mediante un get los archivos requeridos
 
 ------------------------------------------------------------------------
 
@@ -298,7 +303,16 @@ Reemplace el siguiente bloque con su diagrama:
 
 ``` mermaid
 flowchart LR
-    A[Construya aquí] --> B[su flujo observado]
+    Usuario --> Interfaz
+    Interfaz --> Navegador
+    Navegador --> JavaScript
+    JavaScript --> Solicitud_HTTP
+    Solicitud_HTTP --> Servidor
+    Servidor --> Respuesta_HTTP
+    Respuesta_HTTP --> JavaScript
+    JavaScript --> DOM
+    DOM --> Interfaz
+    Interfaz --> Usuario
 ```
 
 ------------------------------------------------------------------------
@@ -312,15 +326,15 @@ Clasifique sus hallazgos:
 
 ## Elementos observados directamente
 
--   
--   
--   
+-   Detalles de la Solicitud HTTP
+-   Contenido de la Respuesta HTTP
+-   Tiempos de carga y transferencia
 
 ## Elementos inferidos
 
--   
--   
--   
+-   Procesamiento interno del Servidor
+-   Estructura del Servidor
+-   Mecanismos de autenticación internos
 
 > No presente como observado un proceso interno que las herramientas del
 > navegador no permitan comprobar directamente.
@@ -331,9 +345,9 @@ Clasifique sus hallazgos:
 
 Redacte **tres conclusiones técnicas** derivadas de la práctica.
 
-1.  
-2.  
-3.  
+1.  La asincronía (AJAX/Fetch) optimiza la experiencia de usuario y el consumo de red
+2.  Las herramientas de desarrollo (DevTools) delimitan la frontera entre el cliente y el backend
+3.  El DOM y la interfaz visual son completamente maleables desde el lado del cliente
 
 Las conclusiones deben explicar lo aprendido a partir de la evidencia y
 no limitarse a describir las actividades realizadas.
