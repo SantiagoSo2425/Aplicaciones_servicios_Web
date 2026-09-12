@@ -1,5 +1,8 @@
 # Análisis — Taller 1: Integración de datos entre aplicaciones
 
+**Equipo:** EQUIPO-10-APPSWEB
+**Integrantes:** Juan Carlos Monsalve, Santiago Suárez Osorio
+
 ## 1. Diferencias entre los contratos de los proveedores
 
 | Aspecto | Proveedor A (JSON) | Proveedor B (CSV) | Contrato institucional |
