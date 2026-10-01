@@ -125,3 +125,20 @@ La documentación alternativa con ReDoc está disponible en:
 ```text
 http://127.0.0.1:8000/redoc
 ```
+
+## Actividad: segunda consulta GET
+
+Además del `GET /` con "Hola mundo", se agregó `GET /saludo/{nombre}`, que recibe un parámetro de ruta (`nombre`) y un parámetro de consulta opcional (`idioma`: `es`, `en` o `fr`).
+
+```bash
+curl http://127.0.0.1:8000/saludo/Santi
+curl "http://127.0.0.1:8000/saludo/Santi?idioma=en"
+```
+
+Respuesta esperada:
+
+```json
+{
+  "message": "Hello Santi"
+}
+```
