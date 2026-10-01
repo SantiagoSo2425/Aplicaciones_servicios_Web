@@ -8,6 +8,7 @@ dataset_estudiantes: list[list] = []
 
 
 class Estudiante(BaseModel):
+    id: int
     nombre: str
     edad: int
     programa: str
@@ -18,9 +19,20 @@ def read_root():
     return {"message": "Hola mundo"}
 
 
+def buscar_por_id(id: int) -> Optional[list]:
+    for registro in dataset_estudiantes:
+        if registro[0] == id:
+            return registro
+    return None
+
+
 @app.post("/estudiantes")
 def agregar_estudiante(estudiante: Estudiante):
+    if buscar_por_id(estudiante.id) is not None:
+        return {"error": "Ya existe un estudiante con ese id"}
+
     estudiante_como_lista = [
+        estudiante.id,
         estudiante.nombre,
         estudiante.edad,
         estudiante.programa,
@@ -35,6 +47,22 @@ def agregar_estudiante(estudiante: Estudiante):
         "message": "Estudiante agregado correctamente",
         "estudiante": estudiante_como_lista,
         "dataset": dataset_estudiantes,
+    }
+
+
+@app.get("/estudiantes/{id}")
+def obtener_estudiante(id: int):
+    registro = buscar_por_id(id)
+    if registro is None:
+        return {"error": "Estudiante no encontrado"}
+
+    return {
+        "estudiante": {
+            "id": registro[0],
+            "nombre": registro[1],
+            "edad": registro[2],
+            "programa": registro[3],
+        }
     }
 
 
@@ -55,7 +83,12 @@ def reemplazar_estudiante(indice: int, estudiante: Estudiante):
     if indice < 0 or indice >= len(dataset_estudiantes):
         return {"error": "El estudiante no existe"}
 
+    otro = buscar_por_id(estudiante.id)
+    if otro is not None and otro is not dataset_estudiantes[indice]:
+        return {"error": "Ya existe un estudiante con ese id"}
+
     dataset_estudiantes[indice] = [
+        estudiante.id,
         estudiante.nombre,
         estudiante.edad,
         estudiante.programa,
@@ -77,7 +110,7 @@ def actualizar_estudiante_parcial(
         return {"error": "El estudiante no existe"}
 
     datos_actualizados = estudiante.model_dump(exclude_unset=True)
-    campos = {"nombre": 0, "edad": 1, "programa": 2}
+    campos = {"nombre": 1, "edad": 2, "programa": 3}
 
     for campo, valor in datos_actualizados.items():
         dataset_estudiantes[indice][campos[campo]] = valor

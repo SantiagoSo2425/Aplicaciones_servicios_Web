@@ -18,19 +18,20 @@ El proyecto utiliza un modelo Pydantic para validar la información de cada estu
 
 ```python
 class Estudiante(BaseModel):
+    id: int
     nombre: str
     edad: int
     programa: str
 ```
 
-Cada estudiante debe tener un nombre de texto, una edad numérica y el nombre de un programa académico.
+Cada estudiante debe tener un identificador `id` numérico, un nombre de texto, una edad numérica y el nombre de un programa académico.
 
 Los estudiantes se guardan en la variable `dataset_estudiantes`, que es una lista principal. Cada estudiante se representa como una lista secundaria:
 
 ```python
 dataset_estudiantes = [
-    ["Ana Gómez", 20, "Ingeniería de Sistemas"],
-    ["Carlos Pérez", 22, "Diseño Industrial"]
+    [1, "Ana Gómez", 20, "Ingeniería de Sistemas"],
+    [2, "Carlos Pérez", 22, "Diseño Industrial"]
 ]
 ```
 
@@ -100,16 +101,19 @@ Ejemplo de solicitud:
 
 ```json
 {
+  "id": 1,
   "nombre": "Ana Gómez",
   "edad": 20,
   "programa": "Ingeniería de Sistemas"
 }
 ```
 
+Si ya existe un estudiante con ese `id`, la API responde `{"error": "Ya existe un estudiante con ese id"}`.
+
 Internamente, el estudiante se convierte en una lista y se agrega al dataset:
 
 ```text
-["Ana Gómez", 20, "Ingeniería de Sistemas"]
+[1, "Ana Gómez", 20, "Ingeniería de Sistemas"]
 ```
 
 Respuesta esperada:
@@ -117,14 +121,45 @@ Respuesta esperada:
 ```json
 {
   "message": "Estudiante agregado correctamente",
-  "estudiante": ["Ana Gómez", 20, "Ingeniería de Sistemas"],
+  "estudiante": [1, "Ana Gómez", 20, "Ingeniería de Sistemas"],
   "dataset": [
-    ["Ana Gómez", 20, "Ingeniería de Sistemas"]
+    [1, "Ana Gómez", 20, "Ingeniería de Sistemas"]
   ]
 }
 ```
 
 Cada vez que se ejecuta el POST, el dataset completo también se imprime en la consola del servidor.
+
+### GET `/estudiantes/{id}`
+
+Consulta un estudiante por su identificador (`id`), no por su posición en la lista.
+
+Ejemplo:
+
+```text
+GET /estudiantes/1
+```
+
+Respuesta para un ID existente:
+
+```json
+{
+  "estudiante": {
+    "id": 1,
+    "nombre": "Ana Gómez",
+    "edad": 20,
+    "programa": "Ingeniería de Sistemas"
+  }
+}
+```
+
+Respuesta para un ID que no existe:
+
+```json
+{
+  "error": "Estudiante no encontrado"
+}
+```
 
 ### PUT `/estudiantes/{indice}`
 
@@ -140,13 +175,14 @@ Cuerpo de la solicitud:
 
 ```json
 {
+  "id": 1,
   "nombre": "Ana Rodríguez",
   "edad": 21,
   "programa": "Ingeniería de Software"
 }
 ```
 
-El PUT exige los tres campos y reemplaza completamente la lista que se encuentra en la posición indicada.
+El PUT exige todos los campos (incluido `id`, que no puede repetirse en otro estudiante) y reemplaza completamente la lista que se encuentra en la posición indicada.
 
 ### PATCH `/estudiantes/{indice}`
 
@@ -208,6 +244,7 @@ Después de cada POST, PUT, PATCH o DELETE, el contenido actualizado del dataset
 | Método | Ruta | Función |
 |---|---|---|
 | GET | `/` | Verificar que el servidor funciona |
+| GET | `/estudiantes/{id}` | Consultar un estudiante por su id |
 | POST | `/estudiantes` | Agregar un estudiante |
 | PUT | `/estudiantes/{indice}` | Reemplazar todos los datos |
 | PATCH | `/estudiantes/{indice}` | Actualizar algunos datos |
