@@ -1,0 +1,14 @@
+"""Schemas Pydantic para sensor_magnitudes (solo lectura)."""
+
+from pydantic import BaseModel, ConfigDict
+
+
+class SensorMagnitudOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    id: int
+    sensor_id: int
+    magnitud: str
+    unidad: str
+    valor_minimo: float
+    valor_maximo: float

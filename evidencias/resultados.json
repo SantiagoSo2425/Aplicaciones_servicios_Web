@@ -1,0 +1,611 @@
+[
+  {
+    "prueba": 8,
+    "nombre": "Consulta por ID existente",
+    "tipo": "HTTP",
+    "request": "GET /sensores/14",
+    "esperado": 200,
+    "obtenido": 200,
+    "ok": true,
+    "response": {
+      "id": 14,
+      "codigo": "ENV-001",
+      "nombre": "Sensor ambiental general",
+      "categoria": "AMBIENTE",
+      "ubicacion": "Azotea - estación meteorológica",
+      "activo": true,
+      "fecha_registro": "2026-10-07T11:42:11.181735-05:00",
+      "fecha_registro_utc": "2026-10-07T16:42:11.181735+00:00"
+    }
+  },
+  {
+    "prueba": 9,
+    "nombre": "Consulta por ID inexistente",
+    "tipo": "HTTP",
+    "request": "GET /sensores/999999",
+    "esperado": 404,
+    "obtenido": 404,
+    "ok": true,
+    "response": {
+      "detail": "Sensor con id 999999 no encontrado"
+    }
+  },
+  {
+    "prueba": 10,
+    "nombre": "Consulta historica",
+    "tipo": "HTTP",
+    "request": "GET /sensores/5/mediciones?limit=10",
+    "esperado": 200,
+    "obtenido": 200,
+    "ok": true,
+    "response": [
+      {
+        "id": 78,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 13,
+        "magnitud": "humidity",
+        "unidad": "%",
+        "valor": 58.12,
+        "timestamp_utc": "2026-10-08T11:20:10-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:10+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:10.821545-05:00"
+      },
+      {
+        "id": 77,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 14,
+        "magnitud": "temperature",
+        "unidad": "C",
+        "valor": 18.63,
+        "timestamp_utc": "2026-10-08T11:20:10-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:10+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:10.821545-05:00"
+      },
+      {
+        "id": 76,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 15,
+        "magnitud": "ch4",
+        "unidad": "ppm",
+        "valor": 534.56,
+        "timestamp_utc": "2026-10-08T11:20:10-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:10+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:10.821545-05:00"
+      },
+      {
+        "id": 75,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 13,
+        "magnitud": "humidity",
+        "unidad": "%",
+        "valor": 65.07,
+        "timestamp_utc": "2026-10-08T11:20:05-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:05+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:05.707904-05:00"
+      },
+      {
+        "id": 74,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 14,
+        "magnitud": "temperature",
+        "unidad": "C",
+        "valor": 31.94,
+        "timestamp_utc": "2026-10-08T11:20:05-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:05+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:05.707904-05:00"
+      },
+      {
+        "id": 73,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 15,
+        "magnitud": "ch4",
+        "unidad": "ppm",
+        "valor": 733.57,
+        "timestamp_utc": "2026-10-08T11:20:05-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:05+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:05.707904-05:00"
+      },
+      {
+        "id": 72,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 13,
+        "magnitud": "humidity",
+        "unidad": "%",
+        "valor": 52.95,
+        "timestamp_utc": "2026-10-08T11:20:00-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:00+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:00.785889-05:00"
+      },
+      {
+        "id": 71,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 14,
+        "magnitud": "temperature",
+        "unidad": "C",
+        "valor": 28.24,
+        "timestamp_utc": "2026-10-08T11:20:00-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:00+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:00.785889-05:00"
+      },
+      {
+        "id": 70,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 15,
+        "magnitud": "ch4",
+        "unidad": "ppm",
+        "valor": 753.7,
+        "timestamp_utc": "2026-10-08T11:20:00-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:00+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:00.785889-05:00"
+      },
+      {
+        "id": 69,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 13,
+        "magnitud": "humidity",
+        "unidad": "%",
+        "valor": 39.61,
+        "timestamp_utc": "2026-10-08T11:19:55-05:00",
+        "timestamp_utc_original": "2026-10-08T16:19:55+00:00",
+        "fecha_recepcion": "2026-10-08T11:19:55.707940-05:00"
+      }
+    ]
+  },
+  {
+    "prueba": 11,
+    "nombre": "Consulta por rango de fechas",
+    "tipo": "HTTP",
+    "request": "GET /sensores/5/mediciones?desde=2026-10-01T00:00:00Z&hasta=2026-10-09T00:00:00Z&limit=5",
+    "esperado": 200,
+    "obtenido": 200,
+    "ok": true,
+    "response": [
+      {
+        "id": 78,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 13,
+        "magnitud": "humidity",
+        "unidad": "%",
+        "valor": 58.12,
+        "timestamp_utc": "2026-10-08T11:20:10-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:10+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:10.821545-05:00"
+      },
+      {
+        "id": 77,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 14,
+        "magnitud": "temperature",
+        "unidad": "C",
+        "valor": 18.63,
+        "timestamp_utc": "2026-10-08T11:20:10-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:10+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:10.821545-05:00"
+      },
+      {
+        "id": 76,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 15,
+        "magnitud": "ch4",
+        "unidad": "ppm",
+        "valor": 534.56,
+        "timestamp_utc": "2026-10-08T11:20:10-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:10+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:10.821545-05:00"
+      },
+      {
+        "id": 75,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 13,
+        "magnitud": "humidity",
+        "unidad": "%",
+        "valor": 65.07,
+        "timestamp_utc": "2026-10-08T11:20:05-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:05+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:05.707904-05:00"
+      },
+      {
+        "id": 74,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 14,
+        "magnitud": "temperature",
+        "unidad": "C",
+        "valor": 31.94,
+        "timestamp_utc": "2026-10-08T11:20:05-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:05+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:05.707904-05:00"
+      }
+    ]
+  },
+  {
+    "prueba": 12,
+    "nombre": "Rango desde>hasta -> 400",
+    "tipo": "HTTP",
+    "request": "GET /sensores/5/mediciones?desde=2026-10-09T00:00:00Z&hasta=2026-10-08T00:00:00Z",
+    "esperado": 400,
+    "obtenido": 400,
+    "ok": true,
+    "response": {
+      "detail": "Rango invalido: 'desde' es posterior a 'hasta'"
+    }
+  },
+  {
+    "prueba": 13,
+    "nombre": "Validacion HTTP incorrecta -> 422",
+    "tipo": "HTTP",
+    "request": "GET /sensores/5/mediciones?limit=abc",
+    "esperado": 422,
+    "obtenido": 422,
+    "ok": true,
+    "response": {
+      "detail": [
+        {
+          "type": "int_parsing",
+          "loc": [
+            "query",
+            "limit"
+          ],
+          "msg": "Input should be a valid integer, unable to parse string as an integer",
+          "input": "abc"
+        }
+      ]
+    }
+  },
+  {
+    "prueba": 13,
+    "nombre": "Validacion path incorrecta -> 422 (b)",
+    "tipo": "HTTP",
+    "request": "GET /sensores/abc",
+    "esperado": 422,
+    "obtenido": 422,
+    "ok": true,
+    "response": {
+      "detail": [
+        {
+          "type": "int_parsing",
+          "loc": [
+            "path",
+            "sensor_id"
+          ],
+          "msg": "Input should be a valid integer, unable to parse string as an integer",
+          "input": "abc"
+        }
+      ]
+    }
+  },
+  {
+    "prueba": 14,
+    "nombre": "Ultima medicion",
+    "tipo": "HTTP",
+    "request": "GET /sensores/5/ultima-medicion",
+    "esperado": 200,
+    "obtenido": 200,
+    "ok": true,
+    "response": [
+      {
+        "id": 78,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 13,
+        "magnitud": "humidity",
+        "unidad": "%",
+        "valor": 58.12,
+        "timestamp_utc": "2026-10-08T11:20:10-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:10+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:10.821545-05:00"
+      },
+      {
+        "id": 77,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 14,
+        "magnitud": "temperature",
+        "unidad": "C",
+        "valor": 18.63,
+        "timestamp_utc": "2026-10-08T11:20:10-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:10+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:10.821545-05:00"
+      },
+      {
+        "id": 76,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 15,
+        "magnitud": "ch4",
+        "unidad": "ppm",
+        "valor": 534.56,
+        "timestamp_utc": "2026-10-08T11:20:10-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:10+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:10.821545-05:00"
+      }
+    ]
+  },
+  {
+    "prueba": 15,
+    "nombre": "Ultimas N mediciones (limit)",
+    "tipo": "HTTP",
+    "request": "GET /sensores/5/mediciones?limit=3",
+    "esperado": 200,
+    "obtenido": 200,
+    "ok": true,
+    "response": [
+      {
+        "id": 78,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 13,
+        "magnitud": "humidity",
+        "unidad": "%",
+        "valor": 58.12,
+        "timestamp_utc": "2026-10-08T11:20:10-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:10+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:10.821545-05:00"
+      },
+      {
+        "id": 77,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 14,
+        "magnitud": "temperature",
+        "unidad": "C",
+        "valor": 18.63,
+        "timestamp_utc": "2026-10-08T11:20:10-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:10+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:10.821545-05:00"
+      },
+      {
+        "id": 76,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 15,
+        "magnitud": "ch4",
+        "unidad": "ppm",
+        "valor": 534.56,
+        "timestamp_utc": "2026-10-08T11:20:10-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:10+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:10.821545-05:00"
+      }
+    ]
+  },
+  {
+    "prueba": 16,
+    "nombre": "Filtro por magnitud",
+    "tipo": "HTTP",
+    "request": "GET /sensores/5/mediciones?magnitud=ch4&limit=5",
+    "esperado": 200,
+    "obtenido": 200,
+    "ok": true,
+    "response": [
+      {
+        "id": 76,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 15,
+        "magnitud": "ch4",
+        "unidad": "ppm",
+        "valor": 534.56,
+        "timestamp_utc": "2026-10-08T11:20:10-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:10+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:10.821545-05:00"
+      },
+      {
+        "id": 73,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 15,
+        "magnitud": "ch4",
+        "unidad": "ppm",
+        "valor": 733.57,
+        "timestamp_utc": "2026-10-08T11:20:05-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:05+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:05.707904-05:00"
+      },
+      {
+        "id": 70,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 15,
+        "magnitud": "ch4",
+        "unidad": "ppm",
+        "valor": 753.7,
+        "timestamp_utc": "2026-10-08T11:20:00-05:00",
+        "timestamp_utc_original": "2026-10-08T16:20:00+00:00",
+        "fecha_recepcion": "2026-10-08T11:20:00.785889-05:00"
+      },
+      {
+        "id": 67,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 15,
+        "magnitud": "ch4",
+        "unidad": "ppm",
+        "valor": 490.89,
+        "timestamp_utc": "2026-10-08T11:19:55-05:00",
+        "timestamp_utc_original": "2026-10-08T16:19:55+00:00",
+        "fecha_recepcion": "2026-10-08T11:19:55.707940-05:00"
+      },
+      {
+        "id": 64,
+        "sensor_id": 5,
+        "sensor_codigo": "GAS-002",
+        "sensor_magnitud_id": 15,
+        "magnitud": "ch4",
+        "unidad": "ppm",
+        "valor": 620.08,
+        "timestamp_utc": "2026-10-08T11:19:50-05:00",
+        "timestamp_utc_original": "2026-10-08T16:19:50+00:00",
+        "fecha_recepcion": "2026-10-08T11:19:50.755971-05:00"
+      }
+    ]
+  },
+  {
+    "prueba": 8,
+    "nombre": "Detalle sensor-magnitud existente (b)",
+    "tipo": "HTTP",
+    "request": "GET /sensor-magnitudes/1",
+    "esperado": 200,
+    "obtenido": 200,
+    "ok": true,
+    "response": {
+      "id": 1,
+      "sensor_id": 1,
+      "magnitud": "co2",
+      "unidad": "ppm",
+      "valor_minimo": 300.0,
+      "valor_maximo": 5000.0
+    }
+  },
+  {
+    "prueba": 9,
+    "nombre": "Detalle sensor-magnitud inexistente -> 404 (b)",
+    "tipo": "HTTP",
+    "request": "GET /sensor-magnitudes/999999",
+    "esperado": 404,
+    "obtenido": 404,
+    "ok": true,
+    "response": {
+      "detail": "Sensor-magnitud con id 999999 no encontrada"
+    }
+  },
+  {
+    "prueba": 2,
+    "nombre": "Medicion valida",
+    "tipo": "MQTT",
+    "payload": {
+      "sensor_id": "ENV-001",
+      "timestamp": "2026-10-08T21:01:36Z",
+      "measurements": {
+        "humidity": {
+          "value": 50.0,
+          "unit": "%"
+        }
+      }
+    },
+    "esperaba_almacenar": true,
+    "almaceno": true,
+    "motivo": "Almacenadas 1 mediciones de ENV-001",
+    "filas_antes": 69,
+    "filas_despues": 70,
+    "ok": true
+  },
+  {
+    "prueba": 3,
+    "nombre": "Sensor inexistente",
+    "tipo": "MQTT",
+    "payload": {
+      "sensor_id": "FAKE-999",
+      "timestamp": "2026-10-08T21:01:36Z",
+      "measurements": {
+        "temperature": {
+          "value": 20,
+          "unit": "C"
+        }
+      }
+    },
+    "esperaba_almacenar": false,
+    "almaceno": false,
+    "motivo": "Sensor inexistente: codigo 'FAKE-999' no esta en catalogo",
+    "filas_antes": 70,
+    "filas_despues": 70,
+    "ok": true
+  },
+  {
+    "prueba": 4,
+    "nombre": "Unidad incorrecta",
+    "tipo": "MQTT",
+    "payload": {
+      "sensor_id": "ENV-001",
+      "timestamp": "2026-10-08T21:01:36Z",
+      "measurements": {
+        "humidity": {
+          "value": 20,
+          "unit": "INVALID_UNIT"
+        }
+      }
+    },
+    "esperaba_almacenar": false,
+    "almaceno": false,
+    "motivo": "Unidad incorrecta: 'humidity' trae 'INVALID_UNIT' pero se espera '%'",
+    "filas_antes": 70,
+    "filas_despues": 70,
+    "ok": true
+  },
+  {
+    "prueba": 5,
+    "nombre": "Tipo de dato incorrecto (string)",
+    "tipo": "MQTT",
+    "payload": {
+      "sensor_id": "ENV-001",
+      "timestamp": "2026-10-08T21:01:36Z",
+      "measurements": {
+        "humidity": {
+          "value": "no-numero",
+          "unit": "%"
+        }
+      }
+    },
+    "esperaba_almacenar": false,
+    "almaceno": false,
+    "motivo": "Pydantic: ('measurements', 'humidity', 'value', 'int') Input should be a valid integer",
+    "filas_antes": 70,
+    "filas_despues": 70,
+    "ok": true
+  },
+  {
+    "prueba": 6,
+    "nombre": "Magnitud incorrecta",
+    "tipo": "MQTT",
+    "payload": {
+      "sensor_id": "ENV-001",
+      "timestamp": "2026-10-08T21:01:36Z",
+      "measurements": {
+        "magnitud_falsa_xyz": {
+          "value": 1.0,
+          "unit": "C"
+        }
+      }
+    },
+    "esperaba_almacenar": false,
+    "almaceno": false,
+    "motivo": "Magnitud incorrecta: 'magnitud_falsa_xyz' no configurada para ENV-001",
+    "filas_antes": 70,
+    "filas_despues": 70,
+    "ok": true
+  },
+  {
+    "prueba": 7,
+    "nombre": "Timestamp invalido",
+    "tipo": "MQTT",
+    "payload": {
+      "sensor_id": "ENV-001",
+      "timestamp": "no-es-fecha",
+      "measurements": {
+        "humidity": {
+          "value": 20,
+          "unit": "%"
+        }
+      }
+    },
+    "esperaba_almacenar": false,
+    "almaceno": false,
+    "motivo": "Pydantic: ('timestamp',) Value error, timestamp con formato invalido: no-es-fecha",
+    "filas_antes": 70,
+    "filas_despues": 70,
+    "ok": true
+  }
+]
