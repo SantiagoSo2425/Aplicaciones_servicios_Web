@@ -1,8 +1,8 @@
 # Resultados automaticos
 
-Fecha: 2026-10-08T21:01:36.768753+00:00
+Fecha: 2026-10-09T02:42:04.464323+00:00
 Sensor asignado: ENV-001 (id 14)
-Sensor p/historico: GAS-002 (id 5)
+Sensor p/historico: ENV-001 (id 14)
 
 | # | Prueba | Tipo | Esperado | Obtenido | OK |
 |---|---|---|---|---|---|

@@ -7,7 +7,7 @@
 **Tópico configurado (`.env`):** `iot/sensors/ENV-001/data`
 **Broker:** `emqx.coriotlab.co:1883` — **PostgreSQL:** `190.248.28.132:3002/appdb`
 
-> Estado actual: proyecto funcional con sensor ENV-001 confirmado. En colecta de 20 min para completar el histórico propio.
+> Estado actual: proyecto completo y probado con sensor ENV-001. Colecta 20 min realizada 08-oct-2026 21:21–21:41 COT: 241 recibidos, 233 almacenados (699 filas), 8 rechazados (fuera de rango, timestamp inválido, campos faltantes, magnitud extra). Las 18 pruebas dan OK con el propio sensor asignado.
 
 ## 1. Información general
 
@@ -190,7 +190,7 @@ git push -u origin taller-2
 
 ### Pendientes antes del 10-oct-2026 23:59
 
-1. Pedir sensor por Teams (límite 9 oct), poner `MQTT_TOPIC=iot/sensors/{CODIGO}/data` en `.env`, actualizar este README (sensor, tópico, payload real, nombres y aportes).
-2. `python scripts/colectar_20min.py --minutos 20` y guardar `evidencias/colecta_20min.log` + captura de `GET /sensores/{id}/ultima-medicion`.
-3. `python scripts/generar_evidencias.py`, verificar 18 OK con el sensor asignado.
-4. Crear repo del grupo, rama `taller-2`, commits de ambos, entregar enlace en Teams.
+1. ~~Pedir sensor y configurar `.env`~~ — Hecho: `ENV-001`.
+2. ~~Colecta 20 min~~ — Hecha: `evidencias/colecta_20min.log` (241/233/8).
+3. ~~Evidencias~~ — Hechas: `python scripts/generar_evidencias.py` 18/18 OK con ENV-001.
+4. Entregar en Teams el enlace: `https://github.com/SantiagoSo2425/Aplicaciones_servicios_Web/tree/taller-2`.
